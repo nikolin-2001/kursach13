@@ -1,0 +1,56 @@
+{% include "myapp/includes/saitbar.html" %}
+{% include "myapp/includes/style.html" %}
+<body class="body-ramki" >
+<div style="display: flex; justify-content: flex-start">
+
+<div>
+    <table>
+           <tr>
+             <td>
+             <td width="444">
+                  <h2 style="text-align: center">ФИО Студента</h2>
+             </td>
+             <td width="100" style="text-align: center">
+                <t> Systemic engineering</t>
+             </td>
+             <td width="100" style="text-align: center">
+                <t> Mobile and network technology</t>
+             </td>
+             <td width="100" style="text-align: center">
+                <t> SOBD </t>
+             </td>
+               <td>
+               <t> Average score</t>
+               </td>
+
+         {% for s in students %}
+          <div  class="preview-product" style="object-fit: cover">
+          <tr>
+             <td>
+             <td width="444">
+                  <h2 style="text-align: center">{{ s.studentname }}</h2>
+             </td>
+             <td width="100" style="text-align: center">
+                <h2 style="color: #ff8d02 !important"><b> {{ s.ball1 }}</b></h2>
+             </td>
+             <td width="100" style="text-align: center">
+                <h2 style="color: #ff8d02 !important"><b> {{ s.ball2 }}</b></h2>
+             </td>
+             <td width="100" style="text-align: center">
+                    <h2 style="color: #ff8d02 !important"><b> {{ s.ball3 }}</b></h2>
+             </td>
+             <td width="100" style="text-align: center" >
+                    <h2 id="{{s.id}}" style="color: #ff8d02 !important" ><b>
+                    <script>
+                        var x = ({{s.ball1}} + {{s.ball2}} + {{s.ball3}}) / 3
+                        document.getElementById("{{s.id}}").innerHTML = x;
+                    </script></b></h2>
+             </td>
+                   {% endfor %}
+
+        <script>
+
+        </script>
+
+
+
