@@ -5,7 +5,6 @@ from .models import Discipline, Student, Teacher
 from .serializers import DisciplineSerializer, StudentSerializer, TeacherSerializer
 from rest_framework.decorators import api_view
 from rest_framework import viewsets
-from django.views.generic.edit import CreateView
 
 
 from django.shortcuts import render
@@ -82,13 +81,6 @@ def discipline_detail(request, pk):
         return JsonResponse({'message': 'Discipline was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['GET'])
-def discipline_list_published(request):
-    disciplins = Discipline.objects.filter(published=True)
-
-    if request.method == 'GET':
-        disciplins_serializer = DisciplineSerializer(disciplins, many=True)
-        return JsonResponse(disciplins_serializer.data, safe=False)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def student_list(request):
@@ -136,13 +128,6 @@ def student_detail(request, pk):
         return JsonResponse({'message': 'Studentc was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['GET'])
-def student_list_published(request):
-    students = Student.objects.filter(published=True)
-
-    if request.method == 'GET':
-        students_serializer = StudentSerializer(students, many=True)
-        return JsonResponse(students_serializer.data, safe=False)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def teacher_list(request):
